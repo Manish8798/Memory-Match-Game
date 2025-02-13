@@ -14,6 +14,35 @@ struct ContentView: View {
     var body: some View {
         VStack{
             
+            HStack {
+                Button("Easy") {
+                    viewModel.changeDifficultyLevel(to: .easy)
+                }
+                .padding()
+                .background(viewModel.difficultyLevel == .easy ? Color.green : Color.gray)
+                .foregroundColor(.white)
+                .cornerRadius(10)
+                
+                Button("Medium") {
+                    viewModel.changeDifficultyLevel(to: .medium)
+                }
+                .padding()
+                .background(viewModel.difficultyLevel == .medium ? Color.orange : Color.gray)
+                .foregroundColor(.white)
+                .cornerRadius(10)
+                
+                Button("Hard") {
+                    viewModel.changeDifficultyLevel(to: .hard)
+                }
+                .padding()
+                .background(viewModel.difficultyLevel == .hard ? Color.red : Color.gray)
+                .foregroundColor(.white)
+                .cornerRadius(10)
+            }
+            .padding()
+            
+            Spacer()
+            
             if viewModel.isGameCompleted {
                 Text("You won!!")
                     .font(.largeTitle)
@@ -35,10 +64,13 @@ struct ContentView: View {
                 }
             }.padding()
             
+            Spacer()
+            
             Button(action: {
                 viewModel.resetGame()
             }, label: {
                 Text("Restart")
+                    .padding()
             })
         }
     }

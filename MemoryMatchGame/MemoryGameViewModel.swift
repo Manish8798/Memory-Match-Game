@@ -21,7 +21,7 @@ class MemoryGameViewModel: ObservableObject {
         cards.allSatisfy{$0.isMatched}
     }
     
-    @Published var difficultyLevel: DifficultyLevel = .hard
+    @Published var difficultyLevel: DifficultyLevel = .easy
     
     init() {
         resetGame()
@@ -33,8 +33,7 @@ class MemoryGameViewModel: ObservableObject {
     }
     
     func resetGame() {
-        let allEmojis = ["🐶", "🐱", "🐭", "🦊", "🐻", "🐼", "🐸", "🐵", "🐥", "🐞", "🌻", "🍎",
-                         "🍩", "🏀", "🚗", "✈️"]
+        let allEmojis = ["🐶", "🐱", "🐭", "🦊", "🐻", "🐼", "🐸", "🐵", "🐥", "🐞", "🌻", "🍎", "🍩", "🏀", "🚗", "✈️"]
         let numPairs = difficultyLevel.rawValue
         let selectedEmojis = Array(allEmojis.shuffled().prefix(numPairs))
         let shuffledPairs = (selectedEmojis + selectedEmojis).shuffled()
